@@ -1,6 +1,6 @@
 {
   "name": "mentonext",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Zero-config REST adapter for fetching WordPress content into Next.js — posts, pages, custom post types, authors, menus, and search — with SEO normalization (Yoast/RankMath/AIOSEO), pluggable caching, and React hooks.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
