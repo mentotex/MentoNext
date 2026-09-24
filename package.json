@@ -43,16 +43,16 @@
   ],
   "license": "MIT",
   "author": {
-    "name": "Heshmat Bakhtiari",
+    "name": "H. Bakhtiari",
     "email": "bakhtiaripro@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hbakhtiari/MentoNext.git"
+    "url": "git+https://github.com/mentotex/MentoNext.git"
   },
-  "homepage": "https://github.com/hbakhtiari/MentoNext#readme",
+  "homepage": "https://github.com/mentotex/MentoNext#readme",
   "bugs": {
-    "url": "https://github.com/hbakhtiari/MentoNext/issues"
+    "url": "https://github.com/mentotex/MentoNext/issues"
   },
   "engines": {
     "node": ">=18"
