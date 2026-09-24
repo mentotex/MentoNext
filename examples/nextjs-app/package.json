@@ -1,0 +1,23 @@
+{
+  "name": "mentonext-example",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Runnable example app exercising every mentonext feature (posts, pages, custom post types, taxonomies, authors, menus, search, SEO, caching, error handling) against a real WordPress site.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "mentonext": "^0.2.0",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

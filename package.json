@@ -48,11 +48,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mentotex/mentonext.git"
+    "url": "git+https://github.com/hbakhtiari/MentoNext.git"
   },
-  "homepage": "https://github.com/mentotex/mentonext#readme",
+  "homepage": "https://github.com/hbakhtiari/MentoNext#readme",
   "bugs": {
-    "url": "https://github.com/mentotex/mentonext/issues"
+    "url": "https://github.com/hbakhtiari/MentoNext/issues"
   },
   "engines": {
     "node": ">=18"

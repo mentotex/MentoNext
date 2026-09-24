@@ -5,6 +5,10 @@
 
 Zero-config REST adapter for fetching WordPress content into Next.js — posts, pages, custom post types, taxonomies, authors, menus, and search, with built-in SEO normalization (Yoast/RankMath/AIOSEO), sanitization, pluggable caching, typed error handling, and React hooks.
 
+A full runnable example exercising every feature against a real WordPress
+site lives in [`examples/nextjs-app`](./examples/nextjs-app) — clone this
+repo, `cd examples/nextjs-app`, and follow its README.
+
 ## Quickstart (server-side / core adapter)
 
 ```bash
