@@ -1,0 +1,14 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["src/index.ts", "src/react/index.ts"],
+  "out": "docs-api",
+  "name": "mentonext",
+  "readme": "README.md",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "hideGenerator": true,
+  "cleanOutputDir": true,
+  "sort": ["source-order"],
+  "highlightLanguages": ["typescript", "tsx", "bash", "php", "json"]
+}

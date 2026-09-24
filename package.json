@@ -1,0 +1,85 @@
+{
+  "name": "mentonext",
+  "version": "0.2.0",
+  "description": "Zero-config REST adapter for fetching WordPress content into Next.js — posts, pages, custom post types, authors, menus, and search — with SEO normalization (Yoast/RankMath/AIOSEO), pluggable caching, and React hooks.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "mentonext": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.mjs",
+      "require": "./dist/react.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "docs": "typedoc",
+    "test": "npm run build && node test/run-all.mjs",
+    "test:only": "node test/run-all.mjs"
+  },
+  "keywords": [
+    "wordpress",
+    "nextjs",
+    "headless-cms",
+    "rest-api",
+    "seo",
+    "yoast",
+    "rankmath",
+    "react-hooks"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Heshmat Bakhtiari",
+    "email": "bakhtiaripro@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mentotex/mentonext.git"
+  },
+  "homepage": "https://github.com/mentotex/mentonext#readme",
+  "bugs": {
+    "url": "https://github.com/mentotex/mentonext/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "sanitize-html": "^2.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.15",
+    "@types/react": "^18.3.3",
+    "@types/sanitize-html": "^2.13.0",
+    "react": "^18.3.1",
+    "react-test-renderer": "^18.3.1",
+    "tsup": "^8.2.4",
+    "typedoc": "^0.28.20",
+    "typescript": "^5.5.4"
+  },
+  "peerDependencies": {
+    "next": ">=13.0.0",
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  }
+}

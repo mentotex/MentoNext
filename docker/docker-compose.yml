@@ -1,0 +1,74 @@
+# Local WordPress + MySQL stack for developing/testing wp-next-adapter
+# against a real WordPress REST API instead of mocked fetch calls.
+#
+# Quickstart:
+#   cd docker
+#   docker compose up -d
+#   ./wp-init.sh          # installs WP core, Yoast SEO, sample content, pretty permalinks
+#   open http://localhost:8080            (WordPress site)
+#   open http://localhost:8080/wp-admin   (admin: admin / admin — change this if left running)
+#   open http://localhost:8080/wp-json/wp/v2/posts   (REST API, what this package talks to)
+#
+# Then point the package at it:
+#   createWPClient({ baseUrl: 'http://localhost:8080' })
+
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '-uroot', '-proot']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  wordpress:
+    image: wordpress:6-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '8080:80'
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    volumes:
+      - wp_data:/var/www/html
+      - ./mu-plugins:/var/www/html/wp-content/mu-plugins
+
+  # A throwaway container for running WP-CLI commands against the `wordpress`
+  # service (wp-init.sh execs into this rather than installing wp-cli on the
+  # host). Not started by `docker compose up`; wp-init.sh runs it on demand
+  # via `docker compose run`.
+  wpcli:
+    image: wordpress:cli
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    volumes:
+      - wp_data:/var/www/html
+      # Same bind mount as the `wordpress` service: wp-cli boots its own
+      # copy of WordPress against the same files/database, so commands like
+      # `wp post generate --post_type=event` need the mu-plugin's CPT
+      # registration visible here too.
+      - ./mu-plugins:/var/www/html/wp-content/mu-plugins
+    profiles: ['cli'] # excluded from a plain `docker compose up`
+
+volumes:
+  db_data:
+  wp_data:
